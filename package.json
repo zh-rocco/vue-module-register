@@ -2,7 +2,7 @@
   "name": "vue-module-register",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/vue-module-register.min.js",
   "scripts": {
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c scripts/rollup.config.prod.js"
   },
@@ -14,10 +14,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/zh-rocco/rollup-tool.git"
+    "url": "https://github.com/zh-rocco/vue-module-register.git"
   },
   "keywords": [
-    "rollup",
+    "vue module register",
+    "addRoutes",
+    "registerModule",
     "tool"
   ],
   "author": {
@@ -26,7 +28,7 @@
     "url": "https://zh-rocco.github.io/"
   },
   "bugs": {
-    "url": "https://github.com/zh-rocco/rollup-tool/issues"
+    "url": "https://github.com/zh-rocco/vue-module-register/issues"
   },
   "engines": {
     "node": ">=8"
@@ -41,18 +43,17 @@
     "@babel/runtime": "^7.1.2",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
-    "eslint": "^5.6.1",
+    "eslint": "^5.7.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "lodash.capitalize": "^4.2.1",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
     "rollup": "^0.66.6",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-eslint": "^5.0.0",
-    "rollup-plugin-filesize": "^4.0.1",
+    "rollup-plugin-filesize": "^5.0.1",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-replace": "^2.1.0",
