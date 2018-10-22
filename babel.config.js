@@ -3,7 +3,12 @@ module.exports = {
     [
       "@babel/preset-env",
       {
-        modules: false,
+        loose: true, // http://2ality.com/2015/12/babel6-loose-mode.html
+        modules: false, // https://github.com/rollup/rollup-plugin-babel#modules
+        targets: {
+          browsers: ["last 2 versions"],
+        },
+        useBuiltIns: "usage", // https://babeljs.io/docs/en/babel-preset-env#usebuiltins
       },
     ],
   ],
