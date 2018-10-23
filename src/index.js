@@ -1,3 +1,5 @@
-export { CreateLoader } from "./create-loader";
-export { CreateRegister } from "./create-register";
-export { CreateLoaderMixin } from "./create-loader-mixin";
+import CreateLoader from "./create-loader";
+import CreateRegister from "./create-register";
+import CreateLoaderMixin from "./create-loader-mixin";
+
+export { CreateLoader, CreateRegister, CreateLoaderMixin };

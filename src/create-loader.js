@@ -7,7 +7,7 @@ import { DEFAULT_SHARED_POOL_NAME } from "./constant";
  * @export
  * @class createLoader
  */
-export class CreateLoader {
+export default class CreateLoader {
   constructor(options = {}) {
     if (!isObject(options)) {
       throw new TypeError("Illegal parameter: options, expect an object.");
@@ -17,6 +17,9 @@ export class CreateLoader {
     const _poolName = options.poolName || DEFAULT_SHARED_POOL_NAME;
     this.pool = _global[_poolName] = {}; // shared pool
     this.noCache = typeof options.cache === "undefined" ? true : !!options.cache;
+
+    this.mountStore(options.store);
+    this.mountRouter(options.router);
   }
 
   /**
@@ -26,7 +29,9 @@ export class CreateLoader {
    * @memberof createLoader
    */
   mountRouter(router) {
-    this.pool.router = router;
+    if (isObject(router)) {
+      this.pool.router = router;
+    }
   }
 
   /**
@@ -36,7 +41,9 @@ export class CreateLoader {
    * @memberof createLoader
    */
   mountStore(store) {
-    this.pool.store = store;
+    if (isObject(store)) {
+      this.pool.store = store;
+    }
   }
 
   /**

@@ -1,16 +1,16 @@
+import CreateLoader from "./create-loader";
 import { isArray, isObject, isFunction, noop } from "./helper";
 
-export class CreateLoaderMixin {
+export default class CreateLoaderMixin extends CreateLoader {
   constructor(options = {}) {
     if (!isObject(options)) {
       throw new TypeError("Illegal parameter: options, expect an object.");
     }
 
-    const { loader, modules, beforeLoad = noop, afterLoad = noop, onError = noop } = options;
+    super(options);
+    let loadModule = this.loadModule;
 
-    if (!isObject(loader)) {
-      throw new TypeError("Illegal parameter: options.loader, expect an object.");
-    }
+    const { modules, beforeLoad = noop, afterLoad = noop, onError = noop } = options;
 
     if (!isArray(modules) || modules.some(({ name, url }) => !name || !url)) {
       throw new TypeError(
@@ -38,7 +38,7 @@ export class CreateLoaderMixin {
               beforeLoad(module);
             }
 
-            this.$_containerLoader.loadModule(module.url).then(({ type }) => {
+            this.$_containerLoader(module.url).then(({ type }) => {
               if (type === "load") {
                 module.status = "load";
                 // after load callback
@@ -59,8 +59,9 @@ export class CreateLoaderMixin {
 
       created() {
         this.$_containerModules = modules;
-        this.$_containerLoader = loader;
+        this.$_containerLoader = loadModule;
         this.$_handleRouteChange(this.$route.path);
+        loadModule = null;
       },
 
       beforeDestroy() {

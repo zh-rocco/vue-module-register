@@ -7,7 +7,7 @@ import { DEFAULT_SHARED_POOL_NAME } from "./constant";
  * @export
  * @class createRegister
  */
-export class CreateRegister {
+export default class CreateRegister {
   constructor(options = {}) {
     if (!isObject(options)) {
       throw new TypeError("Illegal parameter: options, expect an object.");
