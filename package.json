@@ -2,7 +2,7 @@
   "name": "vue-module-register",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/vue-module-register.min.js",
+  "main": "dist/bundle.min.js",
   "scripts": {
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c scripts/rollup.config.prod.js"
   },

@@ -18,7 +18,7 @@ export default [
     output: [
       // umd development version
       {
-        file: `dist/${name}.js`,
+        file: `dist/bundle.js`,
         format: "umd",
         name,
         banner,
@@ -33,7 +33,7 @@ export default [
     output: [
       // umd with compress version
       {
-        file: `dist/${name}.min.js`,
+        file: `dist/bundle.min.js`,
         format: "umd",
         name,
       },
