@@ -8,7 +8,7 @@ export default class CreateLoaderMixin extends CreateLoader {
     }
 
     super(options);
-    let loadModule = this.loadModule;
+    let loadModule = this.loadModule.bind(this);
 
     const { modules, beforeLoad = noop, afterLoad = noop, onError = noop } = options;
 
