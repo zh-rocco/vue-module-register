@@ -1,33 +1,51 @@
-import _Vue, { ComponentOptions } from "vue";
-import { VueConstructor } from "vue/types/vue";
+import { RouteConfig } from "vue-router";
 
-export interface Storage {
-  getItem: (key: string) => string;
-  setItem: (key: string, value: string) => void;
-  removeItem: (key: string) => void;
-  clear: () => void;
+interface CreateLoaderOptions {
+  global?: any;
+  poolName?: string;
+  cache?: boolean;
+  store?: any;
+  router?: any;
 }
 
-export interface Options {
-  debounce?: number;
-  storage?: Storage;
+export declare class CreateLoader {
+  constructor(options: CreateLoaderOptions);
 }
 
-declare module "vue/types/vue" {
-  interface Vue {
-    $autoStorage: any;
-  }
+interface CreateRegisterOptions {
+  name: string;
+  global?: any;
+  poolName?: string;
+  log?: boolean;
 }
 
-declare module "vue/types/options" {
-  interface ComponentOptions<V extends _Vue> {
-    autoStorage?: any;
-  }
+export declare class CreateRegister {
+  constructor(options: CreateRegisterOptions);
+
+  registerModule(store: any): CreateRegister;
+  addRoutes(routes: RouteConfig[]): CreateRegister;
 }
 
-declare function install(Vue: typeof _Vue): void;
+interface CreateLoaderMixinOptions {
+  modules: {
+    name: string;
+    url: string;
+  }[];
+  global?: any;
+  poolName?: string;
+  cache?: boolean;
+  store?: any;
+  router?: any;
+}
+
+export declare class CreateLoaderMixin {
+  constructor(options: CreateLoaderMixinOptions);
+}
 
 declare const _default: {
-  install: typeof install;
+  CreateLoader: typeof CreateLoader;
+  CreateRegister: typeof CreateRegister;
+  CreateLoaderMixin: typeof CreateLoaderMixin;
 };
+
 export default _default;
