@@ -19,18 +19,10 @@ export default class CreateLoaderMixin extends CreateLoader {
     }
 
     return {
-      watch: {
-        $route({ path }) {
-          if (path) {
-            this.$_handleRouteChange(path);
-          }
-        },
-      },
-
       methods: {
         // asynchronous loading module
         $_handleRouteChange(path) {
-          const module = this.$_containerModules.find((m) => path.startsWith(`/${m.name}`));
+          const module = modules.find((m) => path.startsWith(`/${m.name}`));
           if (module && !module.status) {
             module.status = "pending";
             // before load callback
@@ -38,7 +30,7 @@ export default class CreateLoaderMixin extends CreateLoader {
               beforeLoad(module);
             }
 
-            this.$_containerLoader(module.url).then(({ type }) => {
+            loadModule(module.url).then(({ type }) => {
               if (type === "load") {
                 module.status = "load";
                 // after load callback
@@ -58,15 +50,23 @@ export default class CreateLoaderMixin extends CreateLoader {
       },
 
       created() {
-        this.$_containerModules = modules;
-        this.$_containerLoader = loadModule;
-        this.$_handleRouteChange(this.$route.path);
-        loadModule = null;
+        if (!this.$root.$_VUE_MODULE_REGISTER) {
+          this.$root.$_VUE_MODULE_REGISTER = true;
+
+          this.$_VUE_MODULE_REGISTER_unwatchFn = this.$watch(
+            "$route",
+            ({ path }) => {
+              this.$_handleRouteChange(path);
+            },
+            { immediate: true },
+          );
+        }
       },
 
       beforeDestroy() {
-        this.$_containerModules = null;
-        this.$_containerLoader = null;
+        if (this.$_VUE_MODULE_REGISTER_unwatchFn instanceof Function) {
+          this.$_VUE_MODULE_REGISTER_unwatchFn();
+        }
       },
     };
   }
