@@ -13,19 +13,19 @@ const banner = ` /*!
 
 export default [
   // .js, .cjs.js, .esm.js
-  {
-    ...BaseConfig,
-    output: [
-      // umd development version
-      {
-        file: `dist/bundle.js`,
-        format: "umd",
-        name,
-        banner,
-      },
-    ],
-    plugins: [...BaseConfig.plugins, filesize()],
-  },
+  // {
+  //   ...BaseConfig,
+  //   output: [
+  //     // umd development version
+  //     {
+  //       file: `dist/bundle.js`,
+  //       format: "umd",
+  //       name,
+  //       banner,
+  //     },
+  //   ],
+  //   plugins: [...BaseConfig.plugins, filesize()],
+  // },
 
   // .min.js
   {

@@ -1,11 +1,12 @@
 {
   "name": "vue-module-register",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/bundle.min.js",
   "typings": "types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c scripts/rollup.config.prod.js"
+    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c scripts/rollup.config.prod.js",
+    "deploy": "npm run build && npm publish"
   },
   "files": [
     "README.md",
