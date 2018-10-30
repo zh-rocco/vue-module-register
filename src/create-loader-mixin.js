@@ -56,7 +56,9 @@ export default class CreateLoaderMixin extends CreateLoader {
           this.$_VUE_MODULE_REGISTER_unwatchFn = this.$watch(
             "$route",
             ({ path }) => {
-              this.$_handleRouteChange(path);
+              this.$nextTick(() => {
+                this.$_handleRouteChange(path);
+              });
             },
             { immediate: true },
           );
