@@ -1,6 +1,6 @@
 {
   "name": "vue-module-register",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "",
   "main": "dist/bundle.min.js",
   "typings": "types/index.d.ts",
