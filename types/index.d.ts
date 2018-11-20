@@ -1,51 +1,20 @@
 import { RouteConfig } from "vue-router";
 
-interface CreateLoaderOptions {
-  global?: any;
+interface ContainerHelperOptions {
+  name?: string;
+  poolTarget?: object;
   poolName?: string;
-  cache?: boolean;
   store?: any;
-  router?: any;
 }
 
-export declare class CreateLoader {
-  constructor(options: CreateLoaderOptions);
+export declare class ContainerHelper {
+  constructor(options: ContainerHelperOptions);
+
+  mountSharedMethods(methodsMap: any): void;
+  mountRoutes(routes: RouteConfig[]): void;
+  getRoutes(): RouteConfig[];
+  mountStoreInstance(storeInstance: any): void;
+  registerModule(storeModule: any): void;
 }
 
-interface CreateRegisterOptions {
-  name: string;
-  global?: any;
-  poolName?: string;
-  log?: boolean;
-}
-
-export declare class CreateRegister {
-  constructor(options: CreateRegisterOptions);
-
-  registerModule(store: any): CreateRegister;
-  addRoutes(routes: RouteConfig[]): CreateRegister;
-}
-
-interface CreateLoaderMixinOptions {
-  modules: {
-    name: string;
-    url: string;
-  }[];
-  global?: any;
-  poolName?: string;
-  cache?: boolean;
-  store?: any;
-  router?: any;
-}
-
-export declare class CreateLoaderMixin {
-  constructor(options: CreateLoaderMixinOptions);
-}
-
-declare const _default: {
-  CreateLoader: typeof CreateLoader;
-  CreateRegister: typeof CreateRegister;
-  CreateLoaderMixin: typeof CreateLoaderMixin;
-};
-
-export default _default;
+export default ContainerHelper;
