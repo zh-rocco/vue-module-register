@@ -16,9 +16,9 @@ export default {
       include: ["src/**/*.js"],
     }),
     babel({
-      runtimeHelpers: true,
-      externalHelpers: true,
-      exclude: "node_modules/**", // only transpile our source code
+      // runtimeHelpers: true,
+      // externalHelpers: true,
+      // exclude: "node_modules/**", // only transpile our source code
     }),
   ],
 };

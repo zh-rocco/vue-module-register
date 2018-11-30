@@ -2,15 +2,15 @@ module.exports = {
   presets: [
     [
       "@babel/preset-env",
-      {
-        loose: true, // http://2ality.com/2015/12/babel6-loose-mode.html
-        modules: false, // https://github.com/rollup/rollup-plugin-babel#modules
-        targets: {
-          browsers: ["last 2 versions"],
-        },
-        useBuiltIns: "usage", // https://babeljs.io/docs/en/babel-preset-env#usebuiltins
-      },
+      // {
+      //   loose: true, // http://2ality.com/2015/12/babel6-loose-mode.html
+      //   modules: false, // https://github.com/rollup/rollup-plugin-babel#modules
+      //   targets: {
+      //     browsers: ["last 2 versions"],
+      //   },
+      //   useBuiltIns: "usage", // https://babeljs.io/docs/en/babel-preset-env#usebuiltins
+      // },
     ],
   ],
-  plugins: ["@babel/plugin-external-helpers", "@babel/plugin-transform-runtime"],
+  // plugins: ["@babel/plugin-external-helpers", "@babel/plugin-transform-runtime"],
 };
