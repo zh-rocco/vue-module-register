@@ -1,6 +1,6 @@
 # vue-module-register
 
-vue module register plugin.
+vue module register plugin, for [vue-simple-micro-frontends](https://github.com/zh-rocco/vue-simple-micro-frontends).
 
 ## Doc
 
